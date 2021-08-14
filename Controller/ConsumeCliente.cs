@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using ConsoleApp1.Model;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using RestSharp;
 using System;
@@ -9,7 +10,7 @@ namespace ConsoleApp1.Controller
 {
     class ConsumeCliente
     {
-       public string GetCliente(int pidCliente, string pperiodoDe, string pperiodoA, string pnombre, 
+       public Cliente GetCliente(int pidCliente, string pperiodoDe, string pperiodoA, string pnombre, 
            string paPaterno, string paMaterno, string prfc, string pidSucursal, 
            string psucursal, string pidEmpresa, string pempresa, string pidProductoFinanciero,
            string pnombreProductoFinanciero, string pusr, string ppsw)
@@ -50,8 +51,12 @@ namespace ConsoleApp1.Controller
             string json = response.Content.ToString();
             JObject objectres = JObject.Parse(json);
             Console.WriteLine("Onjeto parseado " + objectres);
+            // Obtener la propiedades result en una lista 
+            Console.WriteLine(objectres["seguridad"].["cliente"].ToString());
+            // Serializa resultados JSON a un objeto .NET
+            Cliente searchResult = JsonConvert.DeserializeObject<Cliente>(objectres["seguridad"].["cliente"].ToString());
 
-            return json;
+            return searchResult;
         }
     }
 }
