@@ -5,13 +5,13 @@ using ConsoleApp1.Model;
 
 namespace ConsoleApp1
 {
-    class Program
+        class Program
     {
         static void Main(string[] args)
         {
             // Prueba consumo Cliente
             ConsumeCliente consumeCliente = new ConsumeCliente();
-            IList<Cliente> micliente = consumeCliente.GetCliente(0, "", "", "", "", "", "", "", "", "", "", "", "", "financiera06", "gFPdxhPi");
+            IList<Cliente> micliente = consumeCliente.GetCliente(8, "", "", "", "", "", "", "", "", "", "", "", "", "financiera06", "gFPdxhPi");
             //Lista el Obejto Model propiedades de Cliente
             int registros = micliente.Count;
             if (registros > 0)
