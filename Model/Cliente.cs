@@ -36,7 +36,7 @@ namespace ConsoleApp1.Model
         [JsonProperty("estatus")]
         public int estatus { get; set; }
         [JsonProperty("idSeguro")]
-        public int idSeguro { get; set; }
+        public string idSeguro { get; set; }
         [JsonProperty("nombreSeguro")]
         public string nombreSeguro { get; set; }
         [JsonProperty("idProductoFinanciero")]
@@ -45,6 +45,8 @@ namespace ConsoleApp1.Model
         public string nombreProductoFinanciero { get; set; }
         [JsonProperty("indObligado")]
         public bool indObligado { get; set; }
+        //[JsonProperty("code")]
+        //public string code { get; set; }
 
     }
 }

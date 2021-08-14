@@ -4,16 +4,17 @@ using Newtonsoft.Json.Linq;
 using RestSharp;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace ConsoleApp1.Controller
 {
     class ConsumeCliente
     {
-       public Cliente GetCliente(int pidCliente, string pperiodoDe, string pperiodoA, string pnombre, 
-           string paPaterno, string paMaterno, string prfc, string pidSucursal, 
-           string psucursal, string pidEmpresa, string pempresa, string pidProductoFinanciero,
-           string pnombreProductoFinanciero, string pusr, string ppsw)
+        public IList<Cliente> GetCliente(int pidCliente, string pperiodoDe, string pperiodoA, string pnombre,
+            string paPaterno, string paMaterno, string prfc, string pidSucursal,
+            string psucursal, string pidEmpresa, string pempresa, string pidProductoFinanciero,
+            string pnombreProductoFinanciero, string pusr, string ppsw)
         {
             //Crea objetos para seguridad
             ConsumeLogin consumelogin = new ConsumeLogin();
@@ -49,14 +50,20 @@ namespace ConsoleApp1.Controller
             request.AddParameter("application/json", body, ParameterType.RequestBody);
             IRestResponse response = client.Execute(request);
             string json = response.Content.ToString();
+            // Obtener la propiedades en una lista 
             JObject objectres = JObject.Parse(json);
-            Console.WriteLine("Onjeto parseado " + objectres);
-            // Obtener la propiedades result en una lista 
-            Console.WriteLine(objectres["seguridad"].["cliente"].ToString());
+            IList<JToken> results = objectres["cliente"].Children().ToList();
             // Serializa resultados JSON a un objeto .NET
-            Cliente searchResult = JsonConvert.DeserializeObject<Cliente>(objectres["seguridad"].["cliente"].ToString());
+            IList<Cliente> searchResults = new List<Cliente>();
+            //Llena una lista de Obejtis Model Cliente Deserializados
+            foreach (JToken result in results)
+            {
+                Cliente searchResult = JsonConvert.DeserializeObject<Cliente>(result.ToString());
+                searchResults.Add(searchResult);
+            }
+            //Devuelve la lista de Clientes
+            return searchResults;
+        }   
 
-            return searchResult;
-        }
     }
 }
