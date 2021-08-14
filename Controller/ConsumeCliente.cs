@@ -5,7 +5,6 @@ using RestSharp;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace ConsoleApp1.Controller
 {
@@ -52,6 +51,7 @@ namespace ConsoleApp1.Controller
             string json = response.Content.ToString();
             // Obtener la propiedades en una lista 
             JObject objectres = JObject.Parse(json);
+            Console.WriteLine("Onjeto parseado " + objectres);
             IList<JToken> results = objectres["cliente"].Children().ToList();
             // Serializa resultados JSON a un objeto .NET
             IList<Cliente> searchResults = new List<Cliente>();

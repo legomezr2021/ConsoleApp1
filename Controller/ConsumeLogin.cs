@@ -2,8 +2,6 @@
 using Newtonsoft.Json.Linq;
 using RestSharp;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace ConsoleApp1.Controller
 {
@@ -25,7 +23,6 @@ namespace ConsoleApp1.Controller
             IRestResponse response = client.Execute(request);
             string json = response.Content.ToString();
             JObject objectres = JObject.Parse(json);
-            Console.WriteLine("Onjeto parseado " + objectres);
             // Obtener la propiedades result en una lista 
             Console.WriteLine(objectres["seguridad"].ToString());
             // Serializa resultados JSON a un objeto .NET

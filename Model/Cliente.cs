@@ -1,7 +1,4 @@
 ﻿using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace ConsoleApp1.Model
 {
@@ -45,8 +42,5 @@ namespace ConsoleApp1.Model
         public string nombreProductoFinanciero { get; set; }
         [JsonProperty("indObligado")]
         public bool indObligado { get; set; }
-        //[JsonProperty("code")]
-        //public string code { get; set; }
-
     }
 }
