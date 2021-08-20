@@ -13,7 +13,7 @@ namespace ConsoleApp1.Controller
             var acceso = new CreaAcceso();
             var body = acceso.GetCredentials(usr, psw);
             Console.WriteLine(body);
-            //Genera llamado a servicio de seguridad
+            //Genera llamado a servicio de seguridad algo
             var client = new RestClient("https://krsrdgwsw.xicantel.com:8453/auth/api/user/login");
             client.Timeout = -1;
             var request = new RestRequest(Method.POST);
