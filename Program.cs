@@ -9,7 +9,7 @@ namespace ConsoleApp1
     {
         static void Main(string[] args)
         {
-            // Prueba consumo Cliente
+         /*   // Prueba consumo Cliente
             ConsumeCliente consumeCliente = new ConsumeCliente();
             IList<Cliente> micliente = consumeCliente.GetCliente(8, "", "", "", "", "", "", "", "", "", "", "", "", "financiera06", "gFPdxhPi");
             //Lista el Obejto Model propiedades de Cliente
@@ -42,6 +42,27 @@ namespace ConsoleApp1
             else
             {
                 Console.WriteLine("La consulta no devolvió registros con los parametros enviados" );
+            }*/
+            // Prueba consumo Cliente
+            ConsumeTxCliente consumetxclienteRes = new ConsumeTxCliente();
+            IList<TxClienteResponse> miDatosCredito = consumetxclienteRes.GetTxCliente(8, 0, 1, "financiera06", "gFPdxhPi");
+            //Lista el Obejto Model propiedades de Cliente
+            int registros = miDatosCredito.Count;
+            if (registros > 0)
+            {
+                foreach (TxClienteResponse item in miDatosCredito)
+                {
+                    Console.WriteLine("id = " + item.id);
+                    Console.WriteLine("nombre = " + item.idCliente);
+                    Console.WriteLine("nombre = " + item.idTransaccion);
+                    Console.WriteLine("nombre = " + item.pan);
+                    Console.WriteLine("nombre = " + item.noCredito);
+                    Console.WriteLine("nombre = " + item.producto);
+                }
+            }
+            else
+            {
+                Console.WriteLine("La consulta no devolvió registros con los parametros enviados");
             }
         }
     }
