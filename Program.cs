@@ -62,7 +62,7 @@ namespace ConsoleApp1
             }
             else
             {
-                Console.WriteLine("La consulta no devolvió registros con los parametros enviados");
+                Console.WriteLine("La consulta no devolvió registros con los parametros enviados.");
             }
         }
     }
