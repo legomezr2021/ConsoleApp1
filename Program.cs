@@ -9,11 +9,7 @@ namespace ConsoleApp1
     {
         static void Main(string[] args)
         {
-<<<<<<< HEAD
             int opcion = 5;
-=======
-            int opcion = 4;
->>>>>>> caf9b0e252058c07e8fd0312f855fee4b966f14e
             if (opcion == 1)
             {
                 // Prueba consumo Cliente
@@ -59,7 +55,6 @@ namespace ConsoleApp1
                 //Lista el Obejto Model propiedades de Cliente solo se muestra los primeros 6 en ejemplo
                 int registrosTx = miDatosCredito.Count;
                 if (registrosTx > 0)
-<<<<<<< HEAD
                 {
                     foreach (TxClienteResponse item in miDatosCredito)
                     {
@@ -74,35 +69,8 @@ namespace ConsoleApp1
                 else
                 {
                     Console.WriteLine("La consulta no devolvió registros con los parametros enviados.");
-=======
-                {
-                    foreach (TxClienteResponse item in miDatosCredito)
-                    {
-                        Console.WriteLine("id = " + item.id);
-                        Console.WriteLine("idCliente = " + item.idCliente);
-                        Console.WriteLine("idCliente = " + item.idCliente);
-                        Console.WriteLine("pan = " + item.pan);
-                        Console.WriteLine("noCredito = " + item.noCredito);
-                        Console.WriteLine("producto = " + item.producto);
-                    }
->>>>>>> caf9b0e252058c07e8fd0312f855fee4b966f14e
-                }
-                else
-                {
-                    Console.WriteLine("La consulta no devolvió registros con los parametros enviados.");
                 }
             }
-            else if (opcion == 3)
-            {
-                ConsumeDatosCredito consumedatoscreditoRes = new ConsumeDatosCredito();
-                DatosCreditoResponse datoscreditoRes = consumedatoscreditoRes.GetDataCredit(8, "financiera06", "gFPdxhPi");
-                //recorreo las propiedades del obejto con los datos de credito del cliente solicitado:
-                Console.WriteLine("montoCredito = " + datoscreditoRes.montoCredito);
-                Console.WriteLine("montoUtilizado = " + datoscreditoRes.montoUtilizado);
-                Console.WriteLine("montoDisponible = " + datoscreditoRes.montoDisponible);
-                Console.WriteLine("montoVencido = " + datoscreditoRes.montoVencido);
-            }
-<<<<<<< HEAD
             else if (opcion == 3)
             {
                 ConsumeDatosCredito consumedatoscreditoRes = new ConsumeDatosCredito();
@@ -153,27 +121,8 @@ namespace ConsoleApp1
                 Console.WriteLine("escolaridad = " + datosgeneralesclienteresponseRes.escolaridad);
                 Console.WriteLine("ocupacion = " + datosgeneralesclienteresponseRes.ocupacion);
                 Console.WriteLine("scoreBuro = " + datosgeneralesclienteresponseRes.scoreBuro);
-=======
-            else if (opcion == 4)
-            {
-                ConsumeDatosProducto consumedatosproductoRes = new ConsumeDatosProducto();
-                DatosProductoResponse datosproductopesponseRes = consumedatosproductoRes.GetDataProduct(8, "financiera06", "gFPdxhPi");
-                //recorreo las propiedades del obejto con los datos del producto de credito del cliente solicitado:
-                Console.WriteLine("nombre = " + datosproductopesponseRes.nombre);
-                Console.WriteLine("tipo = " + datosproductopesponseRes.tipo);
-                Console.WriteLine("noTarjeta = " + datosproductopesponseRes.noTarjeta);
-                Console.WriteLine("cat = " + datosproductopesponseRes.cat);
-                Console.WriteLine("interesOrdinario = " + datosproductopesponseRes.interesOrdinario);
-                Console.WriteLine("interesMoratorio = " + datosproductopesponseRes.interesMoratorio);
-                Console.WriteLine("anualidad = " + datosproductopesponseRes.anualidad);
-                Console.WriteLine("fechaCorte1 = " + datosproductopesponseRes.fechaCorte1);
-                Console.WriteLine("fechaCorte2 = " + datosproductopesponseRes.fechaCorte2);
-                Console.WriteLine("fechaLimitePago1 = " + datosproductopesponseRes.fechaLimitePago1);
-                Console.WriteLine("fechaLimitePago2 = " + datosproductopesponseRes.fechaLimitePago2);
-                Console.WriteLine("comisiones = " + datosproductopesponseRes.comisiones);
-                Console.WriteLine("comisiones = " + datosproductopesponseRes.comisiones);
->>>>>>> caf9b0e252058c07e8fd0312f855fee4b966f14e
             }
+
         }
     }
 }
