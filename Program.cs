@@ -9,7 +9,7 @@ namespace ConsoleApp1
     {
         static void Main(string[] args)
         {
-            int opcion = 5;
+            int opcion = 6;
             if (opcion == 1)
             {
                 // Prueba consumo Cliente
@@ -122,7 +122,23 @@ namespace ConsoleApp1
                 Console.WriteLine("ocupacion = " + datosgeneralesclienteresponseRes.ocupacion);
                 Console.WriteLine("scoreBuro = " + datosgeneralesclienteresponseRes.scoreBuro);
             }
-
+            else if (opcion == 6)
+            {
+                ConsumeDatosDomicilioCliente consumeDatosDomicilioClienteRes = new ConsumeDatosDomicilioCliente();
+                DatosDomicilioClienteResponse datosDomicilioClienteResponseRes = consumeDatosDomicilioClienteRes.GetDataAddressClient(8, "financiera06", "gFPdxhPi");
+                //recorro las propiedades del obejto con los datos generales del cliente solicitado:
+                Console.WriteLine("calle = " + datosDomicilioClienteResponseRes.calle);
+                Console.WriteLine("noExterior = " + datosDomicilioClienteResponseRes.noExterior);
+                Console.WriteLine("noInterior = " + datosDomicilioClienteResponseRes.noInterior);
+                Console.WriteLine("cp = " + datosDomicilioClienteResponseRes.cp);
+                Console.WriteLine("colonia = " + datosDomicilioClienteResponseRes.colonia);
+                Console.WriteLine("municipio = " + datosDomicilioClienteResponseRes.municipio);
+                Console.WriteLine("ciudadPoblacion = " + datosDomicilioClienteResponseRes.ciudadPoblacion);
+                Console.WriteLine("entidadFederativa = " + datosDomicilioClienteResponseRes.entidadFederativa);
+                Console.WriteLine("pais = " + datosDomicilioClienteResponseRes.pais);
+                Console.WriteLine("tipoVivienda = " + datosDomicilioClienteResponseRes.tipoVivienda);
+                Console.WriteLine("tiempoResidencia = " + datosDomicilioClienteResponseRes.tiempoResidencia);
+            }
         }
     }
 }
