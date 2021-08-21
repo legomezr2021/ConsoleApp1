@@ -8,9 +8,9 @@ using System.Text;
 
 namespace ConsoleApp1.Controller
 {
-    class ConsumeDatosCredito
+    class ConsumeDatosProducto
     {
-        public DatosCreditoResponse GetDataCredit(int pidCliente, string pusr, string ppsw)
+        public DatosProductoResponse GetDataProduct(int pidCliente, string pusr, string ppsw)
         {
             //Crea objetos para seguridad
             ConsumeLogin consumelogin = new ConsumeLogin();
@@ -18,16 +18,16 @@ namespace ConsoleApp1.Controller
             //Obtiene Crdenciales
             miseguridad = consumelogin.GetSecurity(pusr, ppsw);
             //Crea objeto a serializar
-            DatosCreditoRequest datoscreditorequestRes = new DatosCreditoRequest
+            DatosProductoRequest datosproductorequestReq = new DatosProductoRequest
             {
                 idCliente = pidCliente,
                 seguridad = miseguridad
 
             };
             //Serializa peticion del servicio
-            string body = JsonConvert.SerializeObject(datoscreditorequestRes, Formatting.Indented);
+            string body = JsonConvert.SerializeObject(datosproductorequestReq, Formatting.Indented);
             //Genera llamado a servicio de seguridad
-            var client = new RestClient("https://krsrdgwsw.xicantel.com:8453/auth/api/financial/data/credito");
+            var client = new RestClient("https://krsrdgwsw.xicantel.com:8453/auth/api/financial/data/producto");
             client.Timeout = -1;
             var request = new RestRequest(Method.POST);
             request.AddHeader("Content-Type", "application/json");
@@ -39,7 +39,7 @@ namespace ConsoleApp1.Controller
             JObject objectres = JObject.Parse(json);
             Console.WriteLine("Onjeto parseado " + objectres);
             // Serializa resultados JSON a un objeto .NET
-            DatosCreditoResponse searchResult = JsonConvert.DeserializeObject<DatosCreditoResponse>(objectres.ToString());
+            DatosProductoResponse searchResult = JsonConvert.DeserializeObject<DatosProductoResponse>(objectres.ToString());
             return searchResult;
         }
     }
