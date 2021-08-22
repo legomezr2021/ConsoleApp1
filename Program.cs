@@ -5,11 +5,11 @@ using ConsoleApp1.Model;
 
 namespace ConsoleApp1
 {
-        class Program
+    class Program
     {
         static void Main(string[] args)
         {
-            int opcion = 6;
+            int opcion = 9;
             if (opcion == 1)
             {
                 // Prueba consumo Cliente
@@ -138,6 +138,40 @@ namespace ConsoleApp1
                 Console.WriteLine("pais = " + datosDomicilioClienteResponseRes.pais);
                 Console.WriteLine("tipoVivienda = " + datosDomicilioClienteResponseRes.tipoVivienda);
                 Console.WriteLine("tiempoResidencia = " + datosDomicilioClienteResponseRes.tiempoResidencia);
+            }
+            else if (opcion == 7)
+            {
+                ConsumeContactoCliente consumeContactoClienteRes = new ConsumeContactoCliente();
+                DatosContactoClienteResponse datosContactoClienteResponseres = consumeContactoClienteRes.GetContactClient(8, "financiera06", "gFPdxhPi");
+                //recorro las propiedades del obejto con los datos generales del cliente solicitado:
+                Console.WriteLine("telefonoFijo = " + datosContactoClienteResponseres.telefonoFijo);
+                Console.WriteLine("telefonoFijo = " + datosContactoClienteResponseres.celular);
+                Console.WriteLine("telefonoFijo = " + datosContactoClienteResponseres.correo);
+            }
+            else if (opcion == 8)
+            {
+                // Prueba consumo referencias
+                ConsumeReferenciaCliente consumeReferenciaCliente = new ConsumeReferenciaCliente();
+                IList<DatosReferenciaClienteResponse> datosReferenciaClienteResponsesList = consumeReferenciaCliente.GetReferenceClient(8, "financiera06", "gFPdxhPi");
+                //Lista el Obejto Model propiedades de Cliente
+                foreach (DatosReferenciaClienteResponse item in datosReferenciaClienteResponsesList)
+                {
+                    Console.WriteLine("nombre = " + item.nombre);
+                    Console.WriteLine("aPaterno = " + item.aPaterno);
+                    Console.WriteLine("aMaterno = " + item.aMaterno);
+                    Console.WriteLine("telefono = " + item.telefono);
+                    Console.WriteLine("numeroCelular = " + item.numeroCelular);
+                    Console.WriteLine("email = " + item.email);
+                    Console.WriteLine("parentesco = " + item.parentesco);
+                    Console.WriteLine("referenciaTipo = " + item.referenciaTipo);
+                }
+            }
+            else if (opcion == 9)
+            {
+                ConsumeConsultaDocumento consumeContactoClienteRes = new ConsumeConsultaDocumento();
+                ConsultaDocumentosResponse consultaDocumentosResponseres = consumeContactoClienteRes.GetQueryDocument(8, 1, "financiera06", "gFPdxhPi");
+                //recorro las propiedades del obejto se muetra la imagen en base64:
+                Console.WriteLine("contenido = " + consultaDocumentosResponseres.contenido);
             }
         }
     }

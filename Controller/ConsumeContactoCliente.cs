@@ -3,15 +3,14 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using RestSharp;
 using System;
-using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace ConsoleApp1.Controller
 {
-    class ConsumeDatosDomicilioCliente
+    class ConsumeContactoCliente
     {
-        public DatosDomicilioClienteResponse GetDataAddressClient(int pidCliente, string pusr, string ppsw)
+        public DatosContactoClienteResponse GetContactClient(int pidCliente, string pusr, string ppsw)
         {
             //Crea objetos para seguridad
             ConsumeLogin consumelogin = new ConsumeLogin();
@@ -19,16 +18,16 @@ namespace ConsoleApp1.Controller
             //Obtiene Crdenciales
             miseguridad = consumelogin.GetSecurity(pusr, ppsw);
             //Crea objeto a serializar
-            DatosDomicilioClienteRequest datosdomicilioclienteequestReq = new DatosDomicilioClienteRequest
+            DatosContactoClienteRequest datosContactoClienteRequestReq = new DatosContactoClienteRequest
             {
                 idCliente = pidCliente,
                 seguridad = miseguridad
+
             };
             //Serializa peticion del servicio
-            string body = JsonConvert.SerializeObject(datosdomicilioclienteequestReq, Formatting.Indented);
-            Console.WriteLine("Objeto serializado " + body);
+            string body = JsonConvert.SerializeObject(datosContactoClienteRequestReq, Formatting.Indented);
             //Genera llamado a servicio de seguridad
-            var client = new RestClient("https://krsrdgwsw.xicantel.com:8453/auth/api/financial/data/domicilio");
+            var client = new RestClient("https://krsrdgwsw.xicantel.com:8453/auth/api/financial/data/contacto");
             client.Timeout = -1;
             var request = new RestRequest(Method.POST);
             request.AddHeader("Content-Type", "application/json");
@@ -38,9 +37,9 @@ namespace ConsoleApp1.Controller
             string json = response.Content.ToString();
             // Obtener la propiedades en una lista 
             JObject objectres = JObject.Parse(json);
-            Console.WriteLine("Objeto parseado " + objectres);
+            Console.WriteLine("Onjeto parseado " + objectres);
             // Serializa resultados JSON a un objeto .NET
-            DatosDomicilioClienteResponse searchResult = JsonConvert.DeserializeObject<DatosDomicilioClienteResponse>(objectres.ToString());
+            DatosContactoClienteResponse searchResult = JsonConvert.DeserializeObject<DatosContactoClienteResponse>(objectres.ToString());
             return searchResult;
         }
     }
