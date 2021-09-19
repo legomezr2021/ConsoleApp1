@@ -10,7 +10,7 @@ namespace ConsoleApp1
     {
         static void Main(string[] args)
         {
-            int opcion = 13;
+            int opcion = 14;
             if (opcion == 1)
             {
                 // Prueba consumo Cliente
@@ -245,6 +245,19 @@ namespace ConsoleApp1
                 else
                 {
                     Console.WriteLine("La consulta no devolvió registros con los parametros enviados");
+                }
+            }
+            else if (opcion == 14)
+            {
+                // Prueba consumo plaza
+                ConsumePlaza consumePlaza = new ConsumePlaza();
+                IList<PlazaResponse> plazaResponseList = consumePlaza.GetPlaza(1, "financiera06", "gFPdxhPi");
+
+                //Lista el Obejto Model propiedades de plaza
+                foreach (PlazaResponse item in plazaResponseList)
+                {
+                    Console.WriteLine("id = " + item.id);
+                    Console.WriteLine("Nombre = " + item.plaza);
                 }
             }
         }
