@@ -10,7 +10,7 @@ namespace ConsoleApp1.Controller
 {
     class ConsumeCliente
     {
-        public IList<Cliente> GetCliente(int pidCliente, string pperiodoDe, string pperiodoA, string pnombre,
+        public IList<Cliente> GetCliente(string pidCliente, string pperiodoDe, string pperiodoA, string pnombre,
             string paPaterno, string paMaterno, string prfc, string pidSucursal,
             string psucursal, string pidEmpresa, string pempresa, string pidProductoFinanciero,
             string pnombreProductoFinanciero, string pusr, string ppsw)

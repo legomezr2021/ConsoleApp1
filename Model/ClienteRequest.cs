@@ -5,7 +5,7 @@ namespace ConsoleApp1
     class ClienteRequest
     {
         [JsonProperty("idCliente")]
-        public int idCliente { get; set; }
+        public string idCliente { get; set; }
         [JsonProperty("periodoDe")]
         public string periodoDe { get; set; }
         [JsonProperty("periodoA")]

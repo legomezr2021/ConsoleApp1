@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using ConsoleApp1.Controller;
 using ConsoleApp1.Model;
+using ConsoleApp1.Tools;
 
 namespace ConsoleApp1
 {
@@ -9,12 +10,12 @@ namespace ConsoleApp1
     {
         static void Main(string[] args)
         {
-            int opcion = 9;
+            int opcion = 13;
             if (opcion == 1)
             {
                 // Prueba consumo Cliente
                 ConsumeCliente consumeCliente = new ConsumeCliente();
-                IList<Cliente> micliente = consumeCliente.GetCliente(8, "", "", "", "", "", "", "", "", "", "", "", "", "financiera06", "gFPdxhPi");
+                IList<Cliente> micliente = consumeCliente.GetCliente("8", "", "", "", "", "", "", "", "", "", "", "", "", "financiera06", "gFPdxhPi");
                 //Lista el Obejto Model propiedades de Cliente
                 int registros = micliente.Count;
                 if (registros > 0)
@@ -172,6 +173,79 @@ namespace ConsoleApp1
                 ConsultaDocumentosResponse consultaDocumentosResponseres = consumeContactoClienteRes.GetQueryDocument(8, 1, "financiera06", "gFPdxhPi");
                 //recorro las propiedades del obejto se muetra la imagen en base64:
                 Console.WriteLine("contenido = " + consultaDocumentosResponseres.contenido);
+            }
+            else if (opcion == 10)
+            {
+                // Prueba consumo sucursales
+                ConsumeSucursal consumeSucursal = new ConsumeSucursal();
+                IList<SucursalResponse> sucursalResponseList = consumeSucursal.GetSucursal(1, "financiera06", "gFPdxhPi");
+
+                //Lista el Obejto Model propiedades de Cliente
+                foreach (SucursalResponse item in sucursalResponseList)
+                {
+                    Console.WriteLine("Nombre = " + item.nombre);
+                    Console.WriteLine("idEmpresa = " + item.idEmpresa);
+                    Console.WriteLine("idSucursalPlaza = " + item.idSucursalPlaza);
+                }
+            }
+            else if (opcion == 11)
+            {
+                // Prueba consumo empresas
+                ConsumeEmpresa consumjeEmpresa = new ConsumeEmpresa();
+                IList<EmpresaResponse> empresaResponseList = consumjeEmpresa.GetEmpresa(1, "financiera06", "gFPdxhPi");
+
+                //Lista el Obejto Model propiedades de Cliente
+                foreach (EmpresaResponse item in empresaResponseList)
+                {
+                    Console.WriteLine("id = " + item.id);
+                    Console.WriteLine("Nombre = " + item.nombre);
+                }
+            }
+            else if (opcion == 12)
+            {
+                ConvertDate covierte = new ConvertDate();
+                string fechaNew;
+                fechaNew = covierte.ConvertDateToMills("18/09/2021");
+                Console.WriteLine("Fecha milisegundos: " + fechaNew);
+            }
+            else if (opcion == 13)
+            {
+                //Crea Instancia de Clase de conversion de fechas
+                ConvertDate covierte = new ConvertDate();
+                // Prueba consumo Cliente
+                ConsumeCliente consumeCliente = new ConsumeCliente();
+                IList<Cliente> micliente = consumeCliente.GetCliente("", covierte.ConvertDateToMills("01/01/2021"), covierte.ConvertDateToMills("18/09/2021"), "", "", "", "", "", "", "", "", "", "", "financiera06", "gFPdxhPi");
+                //Lista el Obejto Model propiedades de Cliente
+                int registros = micliente.Count;
+                if (registros > 0)
+                {
+                    foreach (Cliente item in micliente)
+                    {
+                        Console.WriteLine("id = " + item.id);
+                        Console.WriteLine("nombre = " + item.nombre);
+                        Console.WriteLine("aPaterno = " + item.aPaterno);
+                        Console.WriteLine("aMaterno = " + item.aMaterno);
+                        Console.WriteLine("rfc = " + item.rfc);
+                        Console.WriteLine("fechaRegistro = " + item.fechaRegistro);
+                        Console.WriteLine("pan = " + item.pan);
+                        Console.WriteLine("nombreCompleto" + item.nombreCompleto);
+                        Console.WriteLine("importeCredito" + item.importeCredito);
+                        Console.WriteLine("idSucursal 0 " + item.idSucursal);
+                        Console.WriteLine("sucursal = " + item.sucursal);
+                        Console.WriteLine("idEmpresa = " + item.idEmpresa);
+                        Console.WriteLine("empresa = " + item.empresa);
+                        Console.WriteLine("estatus = " + item.estatus);
+                        Console.WriteLine("idSeguro = " + item.idSeguro);
+                        Console.WriteLine("nombreSeguro = " + item.nombreSeguro);
+                        Console.WriteLine("idProductoFinanciero" + item.idProductoFinanciero);
+                        Console.WriteLine("nombreProductoFinanciero = " + item.nombreProductoFinanciero);
+                        Console.WriteLine("indObligado = " + item.indObligado);
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("La consulta no devolvió registros con los parametros enviados");
+                }
             }
         }
     }
