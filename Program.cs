@@ -266,7 +266,7 @@ namespace ConsoleApp1
                 PlazoResponse plazoResponseRes = new PlazoResponse();
                 ConsumePlazo consumePlazo = new ConsumePlazo();
                 plazoResponseRes = consumePlazo.GetPlazo(2, "financiera06", "gFPdxhPi");
-                //recorro las propiedades del obejto se muetra la imagen en base64:
+                //recorro las propiedades del obejto plazo:
                 Console.WriteLine("Code = " + plazoResponseRes.code);
             }
         }

@@ -34,7 +34,7 @@ namespace ConsoleApp1.Controller
             request.AddParameter("application/json", body, ParameterType.RequestBody);
             IRestResponse response = client.Execute(request);
             string json = response.Content.ToString();
-            // Obtener la propiedades en una lista 
+            // Obtener la propiedades en objeto
             JObject objectres = JObject.Parse(json);
             Console.WriteLine("Onjeto parseado " + objectres);
             // Serializa resultados JSON a un objeto .NET
