@@ -10,7 +10,7 @@ namespace ConsoleApp1
     {
         static void Main(string[] args)
         {
-            int opcion = 9
+            int opcion = 15
                 ;
             if (opcion == 1)
             {
@@ -260,6 +260,14 @@ namespace ConsoleApp1
                     Console.WriteLine("id = " + item.id);
                     Console.WriteLine("Nombre = " + item.plaza);
                 }
+            }
+            else if (opcion == 15)
+            {
+                PlazoResponse plazoResponseRes = new PlazoResponse();
+                ConsumePlazo consumePlazo = new ConsumePlazo();
+                plazoResponseRes = consumePlazo.GetPlazo(2, "financiera06", "gFPdxhPi");
+                //recorro las propiedades del obejto se muetra la imagen en base64:
+                Console.WriteLine("Code = " + plazoResponseRes.code);
             }
         }
     }
