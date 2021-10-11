@@ -10,7 +10,7 @@ namespace ConsoleApp1
     {
         static void Main(string[] args)
         {
-            int opcion = 16
+            int opcion = 17
                 ;
             if (opcion == 1)
             {
@@ -286,6 +286,15 @@ namespace ConsoleApp1
                     Console.WriteLine("Concepto = " + item.concepto);
                     Console.WriteLine("Liquidado = " + item.indLiquidado);
                 }
+            }
+            else if (opcion == 17)
+            {
+                PagareResponse pagareResponse = new PagareResponse();
+                ConsumePagare consumePagare = new ConsumePagare();
+                pagareResponse = consumePagare.GetPagare(14, "financiera06", "gFPdxhPi");
+                //recorro las propiedades del objeto plazo:
+                Console.WriteLine("Code = " + pagareResponse.code);
+                Console.WriteLine("Pagare b64 = " + pagareResponse.pagare);
             }
         }
     }
