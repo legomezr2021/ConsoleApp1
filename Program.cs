@@ -10,7 +10,7 @@ namespace ConsoleApp1
     {
         static void Main(string[] args)
         {
-            int opcion = 15
+            int opcion = 16
                 ;
             if (opcion == 1)
             {
@@ -268,6 +268,24 @@ namespace ConsoleApp1
                 plazoResponseRes = consumePlazo.GetPlazo(2, "financiera06", "gFPdxhPi");
                 //recorro las propiedades del objeto plazo:
                 Console.WriteLine("Code = " + plazoResponseRes.code);
+            }
+            else if (opcion == 16)
+            {
+                // Prueba consumo tabla amortizacion
+                ConsumeTablaAmortiza consumeTablaAmortiza = new ConsumeTablaAmortiza();
+                IList<TablaAmortizaResponse> tablaAmortizaResponseList = consumeTablaAmortiza.GetTablaAmortiza(8, "financiera06", "gFPdxhPi");
+                //Lista el Obejto Model propiedades de Tabla de Amortizacion
+                foreach (TablaAmortizaResponse item in tablaAmortizaResponseList)
+                {
+                    Console.WriteLine("Id = " + item.id);
+                    Console.WriteLine("No Pago = " + item.pagoNo);
+                    Console.WriteLine("Total Pago = " + item.totalPagos);
+                    Console.WriteLine("Monto Pago = " + item.montoPago);
+                    Console.WriteLine("Fecha Pago = " + item.fechaPago);
+                    Console.WriteLine("Id Mov. = " + item.idMovimientoTarjeta);
+                    Console.WriteLine("Concepto = " + item.concepto);
+                    Console.WriteLine("Liquidado = " + item.indLiquidado);
+                }
             }
         }
     }
